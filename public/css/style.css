@@ -1,0 +1,112 @@
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+main{
+    width: 800px;
+    padding: 20px;
+    margin: 0 auto 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el header */
+header {
+    background-color: #3498db;
+    padding: 20px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cabeceraIzquierda {
+    display: flex;
+    align-items: center;
+}
+
+.cabeceraIzquierda h1 {
+    color: #fff;
+    font-size: 32px;
+    font-weight: bold;
+    margin: 0; /* Elimina cualquier margen adicional */
+}
+
+.cabeceraDerecha {
+    display: flex;
+    align-items: center;
+}
+
+nav {
+    display: flex;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    background-color: #2ecc71;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+nav a:last-child {
+    margin-right: 0;
+}
+
+nav a:hover {
+    background-color: #27ae60;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+h2.mensaje{
+    color: #4d4d4d;
+    text-align: center;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+/* Estilos para la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+table tr:nth-child(odd){
+    background-color: #f2f2f2;
+}
+
+table th {
+    background-color: #3498db;
+    color: #fff;
+    border-color: #3498db;
+}
