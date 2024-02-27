@@ -1,0 +1,330 @@
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+main{
+    width: 800px;
+    padding: 20px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el header */
+header {
+    background-color: #3498db;
+    padding: 20px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cabeceraIzquierda {
+    display: flex;
+    align-items: center;
+}
+
+.cabeceraIzquierda h1 {
+    color: #fff;
+    font-size: 32px;
+    font-weight: bold;
+    margin: 0; /* Elimina cualquier margen adicional */
+}
+
+.cabeceraDerecha {
+    display: flex;
+    align-items: center;
+}
+
+nav {
+    display: flex;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    background-color: #2ecc71;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+nav a:last-child {
+    margin-right: 0;
+}
+
+nav a:hover {
+    background-color: #27ae60;
+}
+
+.botonSesion {
+    background-color: #e74c3c;
+    margin-left: 20px;
+}
+
+.botonSesion:hover {
+    background-color: #c0392b;
+}
+/*  */
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+h2.mensaje{
+    color: #4d4d4d;
+    text-align: center;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+/* Estilos para la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+table tr:nth-child(odd){
+    background-color: #f2f2f2;
+}
+
+table th {
+    background-color: #3498db;
+    color: #fff;
+    border-color: #3498db;
+}
+
+table.alumno caption {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Estilos para el enlace de inscribir */
+a.inscribir {
+    color: #3498db;
+    text-decoration: none;
+}
+
+a.inscribir:hover {
+    text-decoration: underline;
+}
+
+a.boton{
+    font-size: 16px;
+    text-decoration: none;
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+a.boton:hover{
+    background-color: #2980b9;
+}
+
+form {
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+input[type="submit"] {
+    font-size: 16px;
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+/* Estilos para el formulario de inicio de sesión y registro */
+main.sesion {
+    max-width: 400px;
+}
+
+main.sesion {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+main.sesion h1 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+main.sesion h2 {
+    color: #e74c3c;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+main.sesion form {
+    display: flex;
+    flex-direction: column;
+}
+
+main.sesion form p {
+    margin-bottom: 15px;
+}
+
+main.sesion form label {
+    color: #333;
+    margin-bottom: 5px;
+}
+
+main.sesion form input[type="text"],
+main.sesion form input[type="password"],
+main.sesion form input[type="checkbox"],
+main.sesion input[type="number"] {
+    width: calc(100% - 10px); /* Se resta 10px para tener en cuenta el margen predeterminado */
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+main.sesion form input[type="submit"] {
+    font-size: 16px;
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+main.sesion form input[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+/* Estilos del formulario de añadir alumnos */
+main.formAlumnos {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+main.formAlumnos form {
+    display: flex;
+    flex-direction: column;
+}
+
+main.formAlumnos form>div {
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+}
+
+main.formAlumnos form>div div{
+    display: flex;
+    align-items: flex-start;
+}
+
+main.formAlumnos form p {
+    margin: 0; /* Eliminar el margen predeterminado */
+    display: flex;
+    justify-content: space-evenly;
+    flex-grow: 2;
+}
+
+main.formAlumnos form label {
+    color: #333;
+    margin-bottom: 5px;
+}
+
+main.formAlumnos input[type="text"],
+main.formAlumnos input[type="radio"]{
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+main.formAlumnos input[type="text"]{
+    width: 95%; /* Ancho ajustado */
+}
+main.formAlumnos input[type="radio"]{
+    margin: 3px 5px;
+}
+
+main.formAlumnos form input[type="submit"]:hover {
+    background-color: #2980b9;
+}
+/* Estilo de los selectores de las inscripciones */
+select {
+    appearance: none;
+    -webkit-appearance: none; /* Quita el diseño por defecto en el navegador */
+    -moz-appearance: none; /* Quita el diseño por defecto en Firefox */
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+select:focus {
+    outline: none;
+    border-color: #4d90fe;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+  
+/* Estilo para las opciones dentro del selector */
+select option {
+    padding: 10px;
+}
