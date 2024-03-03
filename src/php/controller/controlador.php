@@ -15,7 +15,7 @@
         /**
          * Método por defecto, Comprueba que existe una cookie de recordar la sesión.
          */
-        public function porDefecto(){
+        public function iniciarAplicacion(){
             $this->vista = 'vistaClase';
             session_start();
             session_unset();
@@ -25,7 +25,13 @@
                 $_SESSION['id']=explode('/',$_COOKIE['sesion'])[0];
                 $_SESSION['nombre']=explode('/',$_COOKIE['sesion'])[1];
 
-                return $this->Modelo->tabla_alumno_inscripcion($_SESSION['id']);
+                $alumnos = $this->Modelo->tabla_alumno_inscripcion($_SESSION['id']);
+                if(!empty($alumnos)){
+                    return $alumnos;
+                }
+                else{
+                    $this->vista = 'vistaCrearClase';
+                }
             }
             else{
                 $this->vistaSesion();
@@ -39,7 +45,11 @@
             $this->vista = 'vistaActividades';
             session_start();
             if(isset($_SESSION['id'])){
-                return $this->Modelo->tabla_actividad();
+                $datos = [
+                    "actividad" => $this->Modelo->tabla_actividad(),
+                    "alumnos" => $this->Modelo->numero_alumnos_inscritos_por_actividad($_SESSION['id'])
+                ];
+                return $datos;
             }
             else{
                 $this->vistaSesion();
@@ -55,7 +65,13 @@
             session_start();
             if(isset($_SESSION['id'])){
                 $id = $_SESSION['id'];
-                return $this->Modelo->tabla_alumno_inscripcion($id);
+                $alumnos = $this->Modelo->tabla_alumno_inscripcion($id);
+                if(!empty($alumnos)){
+                    return $alumnos;
+                }
+                else{
+                    $this->vista = 'vistaCrearClase';
+                }
             }
             else{
                 $this->vistaSesion();

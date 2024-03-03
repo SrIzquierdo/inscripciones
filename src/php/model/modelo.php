@@ -17,6 +17,32 @@
             }
 
             $stmt->close();
+
+            return $datos;
+        }
+        /**
+         * Método que devuleve el número de alumnos inscritos por actividad de un tutor en específico.
+         */
+        public function numero_alumnos_inscritos_por_actividad($tutor){
+            $sql="SELECT COUNT(inscripcion.id_alumno) AS numero_alumnos_inscritos, inscripcion.id_actividad AS actividad
+            FROM inscripcion
+            JOIN alumno ON inscripcion.id_alumno = alumno.id
+            JOIN clase ON alumno.id_clase = clase.id
+            JOIN tutor ON clase.id_tutor = tutor.id
+            WHERE tutor.id = ?
+            GROUP BY inscripcion.id_actividad;";
+
+            $stmt = $this->conexion->prepare($sql);
+            $stmt->bind_param('i', $tutor);
+            $stmt->execute();
+
+            $resultado = $stmt->get_result();
+            $datos = array();
+            while ($fila = $resultado->fetch_assoc()) {
+                array_push($datos, $fila);
+            }
+
+            $stmt->close();
             $this->conexion->close();
 
             return $datos;
@@ -127,60 +153,6 @@
             return $alumnos_inscritos;
         }
         /**
-         * Función que devuleve los datos del tutor o false si no devuelve ninguna fila.
-         */
-        public function inicio_sesion($usuario, $psw){
-            $sql = "SELECT id, nombre, psw FROM tutor
-            WHERE usuario = ?;";
-            $stmt = $this->conexion->prepare($sql);
-            $stmt->bind_param('s', $usuario);
-            $stmt->execute();
-
-            $resul = $stmt->get_result();
-            $stmt->close();
-            if($resul->num_rows > 0){
-                $datos = $resul->fetch_assoc();
-                if(password_verify($psw,$datos['psw'])){
-                    unset($datos['psw']);
-                    return $datos;
-                }
-                else{
-                    return false;
-                }
-            }
-            else{
-                return false;
-            }
-        }
-
-        public function comprobar_usuario_tutor($usuario){
-            $sql = "SELECT usuario FROM tutor WHERE usuario = ?";
-            $stmt = $this->conexion->prepare($sql);
-            $stmt->bind_param('s', $usuario);
-            $stmt->execute();
-
-            $resul = $stmt->get_result();
-            $stmt->close();
-            if($resul->num_rows > 0){
-                return true;
-            }
-            else{
-                return false;
-            }
-        }
-
-        public function registro($nombre,$usuario,$hash){
-            $sql = "INSERT INTO tutor (nombre, usuario, psw) VALUES(?, ?, ?);";
-            $stmt = $this->conexion->prepare($sql);
-            $stmt->bind_param('sss', $nombre,$usuario,$hash);
-            if ($stmt->execute()) {
-                return $this->conexion->insert_id;
-            } else {
-                return null;
-            }
-        }
-
-        /**
          * Elimina el alumno inscrito en una actividad.
          */
         public function eliminar_inscrito($alumno, $actividad){
@@ -200,43 +172,5 @@
             $stmt = $this->conexion->prepare($sql);
             $stmt->bind_param('iis', $alumno, $actividad, $fechaFormateada);
             $stmt->execute();
-        }
-        /**
-         * Método de añadir la clase del tutor
-         */
-        public function aniadir_clase($id, $clase, $alumnos){
-            $sql = "INSERT INTO clase (nombre, id_tutor) VALUES (?,?)";
-            $stmt = $this->conexion->prepare($sql);
-            $stmt->bind_param('si', $clase, $id);
-            if ($stmt->execute()) {
-                $idClase = $this->conexion->insert_id;
-                $s=$this->aniadir_alumno($idClase, $alumnos);
-                if(!$s){
-                    return null;
-                }
-                else{
-                    return true;
-                }
-            }
-            else {
-                return null;
-            }
-        }
-        /**
-         * Método de añadir los alumnos del tutor
-         */
-        public function aniadir_alumno($id, $alumnos){
-            $sql = "INSERT INTO alumno (nombre, genero, id_clase) VALUES (?, ?, ?)";
-            $stmt = $this->conexion->prepare($sql);
-            $stmt->bind_param('ssi', $nombre, $genero, $id);
-            foreach($alumnos as $alumno){
-                $nombre = $alumno['nombre'];
-                $genero = $alumno['genero'];
-                if(!$stmt->execute()){
-                    return null;
-                }
-            }
-            return true;
-        }
-        
+        }   
     }

@@ -1,6 +1,6 @@
         <main class="contenedor">
-            <h2><?php echo $datos['actividad'] ?></h2>
-            <form action="?controlador=Controlador&metodo=inscribir&actividad=<?php echo $datos['id']; ?>" method="post">
+            <h2><?php echo $datos['actividad'] ?>: Máximo <?php echo $datos['max_alumnos']; ?> Alumnos.</h2>
+            <form action="?metodo=inscribir&actividad=<?php echo $datos['id']; ?>" method="post">
             <?php
                 for ($i = 0; $i < $datos['max_alumnos']; $i++) {
                     ?>
@@ -24,7 +24,7 @@
                 }
             ?>
                 <input type="submit" value="Enviar">
-                <a href="?controlador=Controlador&metodo=vistaActividades" class="boton">Volver</a>
+                <a href="?metodo=vistaActividades" class="boton">Volver</a>
             </form>
         </main>
     </body>
