@@ -76,7 +76,15 @@
         public function generarClaseAlumnos(){
             session_start();
             $this->vista = 'vistaClase';
-            if(isset($_POST['alumnos'])){
+            $s=true;
+            $i=0;
+            foreach($_POST['alumnos'] as $alumnos){
+                if(empty($alumnos[$i]['nombre'])){
+                    $s=false;
+                }
+                $i++;
+            }
+            if($s){
                 $alumnos = $_POST['alumnos'];
                 $clase = $_POST['nombreClase'];
                 $id = $_SESSION['id'];
