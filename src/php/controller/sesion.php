@@ -119,31 +119,34 @@
          */
         public function inicioSesion(){
             session_start();
-            $usuario = '';
-            $psw = '';
-            if(isset($_POST['nombreUsuario'], $_POST['pswUsuario'])){
+            if($_POST['nombreUsuario'] && $_POST['pswUsuario']){
                 $usuario = $_POST['nombreUsuario'];
                 $psw = $_POST['pswUsuario'];
-            }
-            $datos = $this->Sesion->inicio_sesion($usuario, $psw);
-            if($datos){
-                $_SESSION['id']=$datos['id'];
-                $_SESSION['nombre']=$datos['nombre'];
-                if(isset($_POST['recuerdame'])){
-                    $cookie=$_SESSION['id'].'/'.$_SESSION['nombre'];
-                    setcookie('sesion', $cookie, time()+60*60*24*30, '/'); /* Dura 30 días */
-                }
-                $this->vista = 'vistaClase';
-                $alumnos = $this->Modelo->tabla_alumno_inscripcion($_SESSION['id']);
-                if(!empty($alumnos)){
-                    return $alumnos;
+
+                $datos = $this->Sesion->inicio_sesion($usuario, $psw);
+                if($datos){
+                    $_SESSION['id']=$datos['id'];
+                    $_SESSION['nombre']=$datos['nombre'];
+                    if(isset($_POST['recuerdame'])){
+                        $cookie=$_SESSION['id'].'/'.$_SESSION['nombre'];
+                        setcookie('sesion', $cookie, time()+60*60*24*30, '/'); /* Dura 30 días */
+                    }
+                    $this->vista = 'vistaClase';
+                    $alumnos = $this->Modelo->tabla_alumno_inscripcion($_SESSION['id']);
+                    if(!empty($alumnos)){
+                        return $alumnos;
+                    }
+                    else{
+                        $this->vista = 'vistaCrearClase';
+                    }
                 }
                 else{
-                    $this->vista = 'vistaCrearClase';
+                    $this->mensaje = 'Usuario o contraseña incorrectos.';
+                    $this->vista = 'vistaSesion';
                 }
             }
             else{
-                $this->mensaje = 'Usuario o contraseña incorrectos.';
+                $this->mensaje = 'Rellene todos los campos';
                 $this->vista = 'vistaSesion';
             }
         }
