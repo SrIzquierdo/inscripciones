@@ -25,7 +25,7 @@ $datos = array_filter($datos, function($actividad) {
 foreach ($datos as $actividad => $clases) {
     ?>
     <main class="contenedor">
-    <h2><input type="checkbox" name="pdf[]" value="<?php echo $actividad; ?>"> Actividad: <?php echo $actividad; ?></h2>
+    <h2>Actividad: <?php echo $actividad; ?></h2>
     <?php
     
     // Mostrar tablas de alumnos inscritos por clase
@@ -41,14 +41,8 @@ foreach ($datos as $actividad => $clases) {
             }
             ?>
         </table>
-        <?php
-    }
-    
-    ?>
+        <?php } ?>
     </main>
-    <?php
-}
-?>
-</form>
+    <?php } ?>
 </body>
 </html>

@@ -32,4 +32,25 @@
         
             return $datos;
         }
+        /**
+         * Devuelve los datos de todas las atividades
+         */
+        public function tabla_actividad(){
+            $sql = "SELECT nombre
+                FROM actividad
+                INNER JOIN inscripcion ON actividad.id = inscripcion.id_actividad
+                GROUP BY actividad.id;";
+            $stmt = $this->conexion->prepare($sql);
+            $stmt->execute();
+
+            $resultado = $stmt->get_result();
+            $datos = array();
+            while ($fila = $resultado->fetch_assoc()) {
+                array_push($datos, $fila);
+            }
+
+            $stmt->close();
+
+            return $datos;
+        }
     }
