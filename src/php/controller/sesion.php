@@ -77,12 +77,10 @@
             session_start();
             $this->vista = 'vistaClase';
             $s=true;
-            $i=0;
             foreach($_POST['alumnos'] as $alumnos){
-                if(empty($alumnos[$i]['nombre'])){
+                if(empty($alumnos['nombre'])){
                     $s=false;
                 }
-                $i++;
             }
             if($s){
                 $alumnos = $_POST['alumnos'];
@@ -99,9 +97,9 @@
                     );
                     return $datos;
                 }
-                else{
-                    return $this->Modelo->tabla_alumno_inscripcion($id);
-                }
+                
+                return $this->Modelo->tabla_alumno_inscripcion($id);
+                
             }
             else{
                 $this->mensaje = 'Rellene todos los campos';
