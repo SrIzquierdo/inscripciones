@@ -1,5 +1,5 @@
         <main class="formAlumnos">
-            <h1>Tus alumnos</h1>
+            <h1><?php echo $datos['clase']; ?>: Tus alumnos</h1>
             <?php 
                 if($Control->mensaje){
                     echo '<h2 class="mensaje">'.$Control->mensaje.'</h2>';
@@ -28,6 +28,7 @@
                     }
                 ?>
                 <input type="submit" value="Enviar">
+                <a href="?controlador=Sesion&metodo=vistaVolverClase&clase=<?php echo $datos['clase']; ?>&n=<?php echo $datos['nAlumnos']; ?>" class='submit'>Volver</a>
             </form>
         </main>
     </body>
