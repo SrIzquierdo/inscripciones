@@ -69,6 +69,17 @@
                 $this->vista = 'vistaCrearClase';
             }
         }
+
+        public function vistaVolverClase(){
+            session_start();
+            $this->vista = 'vistaCrearClase';
+            $datos = [
+                "nombre" => $_GET['clase'],
+                "nalumnos" => $_GET['n']
+            ];
+            return $datos; 
+
+        }
         /**
          * Método que añade la clase y sus alumnos del tutor registrado.
          * Devuleve al formulario de añadir alumnos si 
@@ -76,12 +87,16 @@
         public function generarClaseAlumnos(){
             session_start();
             $this->vista = 'vistaClase';
-            $s=true;
-            foreach($_POST['alumnos'] as $alumnos){
-                if(empty($alumnos['nombre'])){
-                    $s=false;
+            $s = false;
+            foreach ($_POST['alumnos'] as $i => $alumno) {
+                if (empty($alumno['nombre'])) {
+                    unset($_POST['alumnos'][$i]); // Elimina la fila del array donde el nombre del alumno está vacío
+                } else {
+                    $s = true;
                 }
             }
+            // Reindexa el array para evitar claves vacías después de la eliminación
+            $_POST['alumnos'] = array_values($_POST['alumnos']);
             if($s){
                 $alumnos = $_POST['alumnos'];
                 $clase = $_POST['nombreClase'];
@@ -102,7 +117,7 @@
                 
             }
             else{
-                $this->mensaje = 'Rellene todos los campos';
+                $this->mensaje = 'Rellene al menos un alumno';
                 $this->vista = 'vistaCrearAlumnos';
                 $datos = array(
                     'clase' => $_POST['nombreClase'],
