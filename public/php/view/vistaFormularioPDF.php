@@ -1,11 +1,11 @@
         <main>
-        <?php 
-            if($Control->mensaje){
-                echo '<h2 class="mensaje">'.$Control->mensaje.'</h2>';
-            }
-        ?>
             <form action="?&metodo=generarPDF" method="post">
                 <h2>Lista de Actividades:</h2>
+            <?php 
+                if($Control->mensaje){
+                    echo '<h2 class="mensaje">'.$Control->mensaje.'</h2>';
+                }
+            ?>
                 <ul>
                     <?php foreach($datos as $actividad){ ?>
                         <li>
