@@ -90,7 +90,8 @@ h2 {
 }
 
 h2.mensaje{
-    color: #4d4d4d;
+    color: #e74c3c;
+    margin-bottom: 20px;
     text-align: center;
 }
 
@@ -163,7 +164,7 @@ label {
     color: #333;
 }
 
-input[type="submit"] {
+input[type="submit"], .submit {
     font-size: 16px;
     background-color: #3498db;
     color: #fff;
@@ -174,8 +175,13 @@ input[type="submit"] {
     transition: background-color 0.3s ease;
 }
 
-input[type="submit"]:hover {
+input[type="submit"]:hover, .submit:hover {
     background-color: #2980b9;
+}
+
+.submit {
+    margin-top: 15px;
+    text-decoration: none;
 }
 
 /* Estilos para el formulario de inicio de sesión y registro */
@@ -194,12 +200,6 @@ main.sesion {
 
 main.sesion h1 {
     color: #333;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-main.sesion h2 {
-    color: #e74c3c;
     margin-bottom: 20px;
     text-align: center;
 }
@@ -298,10 +298,6 @@ main.formAlumnos input[type="text"]{
 }
 main.formAlumnos input[type="radio"]{
     margin: 3px 5px;
-}
-
-main.formAlumnos form input[type="submit"]:hover {
-    background-color: #2980b9;
 }
 /* Estilo de los selectores de las inscripciones */
 select {
