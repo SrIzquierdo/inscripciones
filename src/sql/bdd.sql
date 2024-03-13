@@ -8,8 +8,9 @@ CREATE TABLE tutor(
 
 CREATE TABLE clase(
     `id` tinyint UNSIGNED AUTO_INCREMENT NOT NULL,
-    `nombre` varchar(15)  NOT NULL,
+    `nombre` varchar(15) NOT NULL,
     `id_tutor` tinyint UNSIGNED NOT NULL,
+    `imagen` char(5) NULL,
     CONSTRAINT pkClase PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -38,6 +39,7 @@ CREATE TABLE inscripcion(
 
 CREATE UNIQUE INDEX tutor_clase ON clase(id_tutor);
 CREATE UNIQUE INDEX usuario_tutor ON tutor(usuario);
+CREATE UNIQUE INDEX nombre_clase ON clase(nombre);
 
 ALTER TABLE clase
     ADD CONSTRAINT tutorClase FOREIGN KEY (id_tutor) REFERENCES tutor (id) ON DELETE CASCADE ON UPDATE CASCADE;

@@ -5,7 +5,7 @@
                     echo '<h2 class="mensaje">'.$Control->mensaje.'</h2>';
                 }
             ?>
-            <form action="?controlador=Sesion&metodo=vistaCrearAlumnos" method="post">
+            <form action="?metodo=vistaCrearAlumnos" method="post">
                 <p>
                 <label for="nombreClase">Nombre</label>
                     <input type="text" id="nombreClase" name="nombreClase"

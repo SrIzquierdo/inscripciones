@@ -45,6 +45,9 @@
                 return false;
             }
         }
+        public function comprobar_nombre_clase($clase){
+            
+        }
         /**
          * Método para registrar al tutor
          */
@@ -57,42 +60,5 @@
             } else {
                 return null;
             }
-        }
-        /**
-         * Método de añadir la clase del tutor. Este método solo se realiza después del registro del tutor.
-         */
-        public function aniadir_clase($id, $clase, $alumnos){
-            $sql = "INSERT INTO clase (nombre, id_tutor) VALUES (?,?)";
-            $stmt = $this->conexion->prepare($sql);
-            $stmt->bind_param('si', $clase, $id);
-            if ($stmt->execute()) {
-                $idClase = $this->conexion->insert_id;
-                $s=$this->aniadir_alumno($idClase, $alumnos);
-                if(!$s){
-                    return null;
-                }
-                else{
-                    return true;
-                }
-            }
-            else {
-                return null;
-            }
-        }
-        /**
-         * Método de añadir los alumnos del tutor. Este método solo se realiza después del registro del tutor.
-         */
-        public function aniadir_alumno($id, $alumnos){
-            $sql = "INSERT INTO alumno (nombre, genero, id_clase) VALUES (?, ?, ?)";
-            $stmt = $this->conexion->prepare($sql);
-            $stmt->bind_param('ssi', $nombre, $genero, $id);
-            foreach($alumnos as $alumno){
-                $nombre = $alumno['nombre'];
-                $genero = $alumno['genero'];
-                if(!$stmt->execute()){
-                    return null;
-                }
-            }
-            return true;
         }
     }

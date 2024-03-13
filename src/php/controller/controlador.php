@@ -138,4 +138,44 @@
                 $this->vistaSesion();
             }
         }
+        /**
+         * Método que muestra la vista del formulario de añadir alumnos desde la vista de añadir la clase.
+         * Devuelve al formulario de la clase si encuentra campos vacíos o número de alunmos menor a 0.
+         */
+        public function vistaCrearAlumnos(){
+            session_start();
+            $this->vista = 'vistaCrearAlumnos';
+            if(isset($_POST['nombreClase'],$_POST['nAlumnos'])){
+                $clase = $_POST['nombreClase'];
+                $nAlumnos = $_POST['nAlumnos'];
+                if($nAlumnos>0){
+                    $datos = array(
+                        'clase' => $clase,
+                        'nAlumnos' => $nAlumnos
+                    );
+                    return $datos;
+                }
+                else{
+                    $this->mensaje = 'El número de alumnos no puede ser 0 o menos.';
+                    $this->vista = 'vistaCrearClase';
+                }
+            }
+            else{
+                $this->mensaje = 'Rellene todos los campos';
+                $this->vista = 'vistaCrearClase';
+            }
+        }
+        /**
+         * Método que devuelve a la vista del formulario de la clase.
+         */
+        public function vistaVolverClase(){
+            session_start();
+            $this->vista = 'vistaCrearClase';
+            $datos = [
+                "nombre" => $_GET['clase'],
+                "nalumnos" => $_GET['n']
+            ];
+            return $datos; 
+
+        }
     }
